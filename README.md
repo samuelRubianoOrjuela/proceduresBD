@@ -189,16 +189,51 @@
     ---
 10. Calcula el nombre de los departamentos que tienen más de 2 empleados. El resultado debe tener dos columnas, una con el nombre del departamento y otra con el número de empleados que tiene asignados.
     ```sql
-
+    DELIMITER $$
+    DROP PROCEDURE IF EXISTS departamentos_2_mas_empleados;
+    CREATE PROCEDURE departamentos_2_mas_empleados()
+    BEGIN
+	SELECT d.nombre AS nombre_departamento, COUNT(e.id) AS numero_empleados
+        FROM departamento d
+        LEFT JOIN empleado e ON d.id = e.id_departamento
+        GROUP BY d.nombre
+        HAVING COUNT(e.id) > 2;
+    END $$
+    DELIMITER ; $$
+    CALL departamentos_2_mas_empleados();
+    
     ```
     ---
 11. Calcula el número de empleados que trabajan en cada uno de los departamentos. El resultado de esta consulta también tiene que incluir aquellos departamentos que no tienen ningún empleado asociado.
     ```sql
-
+    DELIMITER $$
+    DROP PROCEDURE IF EXISTS numero_empleados_departamento;
+    CREATE PROCEDURE numero_empleados_departamento()
+    BEGIN
+	    SELECT d.nombre AS nombre_departamento, COUNT(e.id) AS 		numero_empleados
+	    FROM departamento d
+	    LEFT JOIN empleado e ON d.id = e.id_departamento
+	    GROUP BY d.nombre;
+    END $$
+    DELIMITER ; $$
+    CALL numero_empleados_departamento();
+    
     ```
     ---
 12. Calcula el número de empleados que trabajan en cada unos de los departamentos que tienen un presupuesto mayor a 200000 euros.
     ```sql
-
+    DELIMITER $$
+    DROP PROCEDURE IF EXISTS numero_empleados_departamento_2;
+    CREATE PROCEDURE numero_empleados_departamento_2()
+    BEGIN
+		SELECT d.nombre AS nombre_departamento, COUNT(e.id) AS 	numero_empleados
+		FROM departamento d
+		LEFT JOIN empleado e ON d.id = e.id_departamento
+		WHERE d.presupuesto > 200000
+		GROUP BY d.nombre;
+    END $$
+    DELIMITER ; $$
+    CALL numero_empleados_departamento_2();
+    
     ```
     ---
