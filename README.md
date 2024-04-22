@@ -202,6 +202,12 @@
     DELIMITER ; $$
     CALL departamentos_2_mas_empleados();
     
+    +---------------------+------------------+
+    | nombre_departamento | numero_empleados |
+    +---------------------+------------------+
+    | Desarrollo          |                3 |
+    | Sistemas            |                3 |
+    +---------------------+------------------+
     ```
     ---
 11. Calcula el número de empleados que trabajan en cada uno de los departamentos. El resultado de esta consulta también tiene que incluir aquellos departamentos que no tienen ningún empleado asociado.
@@ -218,6 +224,17 @@
     DELIMITER ; $$
     CALL numero_empleados_departamento();
     
+    +---------------------+------------------+
+    | nombre_departamento | numero_empleados |
+    +---------------------+------------------+
+    | Desarrollo          |                3 |
+    | Sistemas            |                3 |
+    | Recursos Humanos    |                2 |
+    | Contabilidad        |                1 |
+    | I+D                 |                2 |
+    | Proyectos           |                0 |
+    | Publicidad          |                0 |
+    +---------------------+------------------+
     ```
     ---
 12. Calcula el número de empleados que trabajan en cada unos de los departamentos que tienen un presupuesto mayor a 200000 euros.
@@ -235,5 +252,11 @@
     DELIMITER ; $$
     CALL numero_empleados_departamento_2();
     
+    +---------------------+------------------+
+    | nombre_departamento | numero_empleados |
+    +---------------------+------------------+
+    | Recursos Humanos    |                2 |
+    | I+D                 |                2 |
+    +---------------------+------------------+
     ```
     ---
